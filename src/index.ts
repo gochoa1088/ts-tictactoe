@@ -67,6 +67,15 @@ const victories: Victory[] = [
 ];
 
 function checkBoard() {
+  for (let victory of victories) {
+    const cell1 = boardState[victory[0][0]][victory[0][1]];
+    const cell2 = boardState[victory[1][0]][victory[1][1]];
+    const cell3 = boardState[victory[2][0]][victory[2][1]];
+
+    if (cell1 !== "" && cell1 === cell2 && cell2 === cell3) {
+      return cell1;
+    }
+  }
   let isDraw: boolean = true;
   rowLoop: for (let i = 0; i < ROW_COUNT; i++) {
     for (let j = 0; j < COL_COUNT; j++) {
